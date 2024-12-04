@@ -1,8 +1,8 @@
-{"connect_descriptor": "(description=(retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1521)(host=adb.us-phoenix-1.oraclecloud.com))(connect_data=(service_name=gebqqvpozhjbqbs_dbtest_medium.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))",
-  "user": "scott",
+{"connect_descriptor": "{url}",
+  "user": "{user}",
   "password": {
     "type": "base64",
-    "value": "TWFuYWdlcjA2KioqCg=="
+    "value": "{password}"
   },
   "jdbc": {
     "oracle.jdbc.ReadTimeout": 2000,
