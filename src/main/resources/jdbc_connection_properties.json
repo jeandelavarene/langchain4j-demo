@@ -1,8 +1,8 @@
-{"connect_descriptor": "tcps://adb.eu-paris-1.oraclecloud.com:1522/ga51a92487fa463_gdp4jadb_tp.adb.oraclecloud.com",
-  "user": "ADMIN",
+{"connect_descriptor": "{url}",
+  "user": "user",
   "password": {
     "type": "base64",
-    "value": "c2RralNEU0RuMzQ5MjMsOzg4c2RsamNuKCk="
+    "value": "{base64pwd}"
   },
   "jdbc": {
     "oracle.jdbc.ReadTimeout": 2000,
