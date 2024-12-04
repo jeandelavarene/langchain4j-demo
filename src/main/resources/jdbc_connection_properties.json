@@ -1,5 +1,5 @@
 {"connect_descriptor": "{url}",
-  "user": "user",
+  "user": "{user}",
   "password": {
     "type": "base64",
     "value": "{base64pwd}"
