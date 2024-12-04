@@ -17,24 +17,13 @@ import java.sql.SQLException;
 @Profile("oracle")
 public class OracleEmbeddingStoreConfiguration {
 
-    @Value("${ORACLE_JDBC_URL}")
-    private String url;
-
-    @Value("${ORACLE_JDBC_USER}")
-    private String user;
-
-    @Value("${ORACLE_JDBC_PASSWORD}")
-    private String password;
-
     @Bean
     EmbeddingStore<TextSegment> embeddingStore() throws SQLException {
 
         PoolDataSource dataSource = PoolDataSourceFactory.getPoolDataSource();
         dataSource.setConnectionFactoryClassName(
                 "oracle.jdbc.datasource.impl.OracleDataSource");
-        dataSource.setURL(url);
-        dataSource.setUser(user);
-        dataSource.setPassword(password);
+        dataSource.setURL("jdbc:oracle:thin:@config-file://jdbc_connection_properties.json");
 
         return OracleEmbeddingStore.builder()
                 .dataSource(dataSource)
