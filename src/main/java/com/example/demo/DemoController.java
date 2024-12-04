@@ -173,23 +173,35 @@ public class DemoController {
 
     @GetMapping("/10")
     String ingestNews(Model model) {
-        Document document = UrlDocumentLoader.load("https://www.microsoft.com/investor/reports/ar23/index.html", new TextDocumentParser());
-
+        /* Document document = UrlDocumentLoader.load("https://www.microsoft.com/investor/reports/ar23/index.html", new TextDocumentParser());
         EmbeddingStoreIngestor ingestor = EmbeddingStoreIngestor.builder()
                 .documentTransformer(new HtmlToTextDocumentTransformer(".annual-report"))
                 .documentSplitter(DocumentSplitters.recursive(300, 30))
                 .embeddingModel(embeddingModel)
                 .embeddingStore(embeddingStore)
                 .build();
+        */
+        // Document document = UrlDocumentLoader.load("file:/home/opc/Oracle-2024-10-K.html", new TextDocumentParser());
+        Document document = UrlDocumentLoader.load("file:/home/opc/demo/langchain4j/langchain4j-demo/oBacle-2024-10-K.html", new TextDocumentParser());
+        EmbeddingStoreIngestor ingestor = EmbeddingStoreIngestor.builder()
+        .documentTransformer(new HtmlToTextDocumentTransformer())
+        .documentSplitter(DocumentSplitters.recursive(300, 30))
+        .embeddingModel(embeddingModel)
+        .embeddingStore(embeddingStore)
+        .build();
+        //https://www.sec.gov/Archives/edgar/data/1341439/000095017023028914/orcl-20230531.htm
+        
+
+        
 
         ingestor.ingest(document);
 
-        return getView(model, "10: Advanced data ingestion", "Ingesting news into the vector database", "OK");
+        return getView(model, "10: Advanced data ingestion", "Ingesting news about oBacle into the Oracle 23ai vector database", "OK");
     }
 
     @GetMapping("/11")
     String rag(Model model) {
-        String question = "How many people are employed by Microsoft in the US?";
+        String question = "How many people are employed by oBacle in the US in 2023?";
 
         Assistant assistant = AiServices.builder(Assistant.class)
                 .chatLanguageModel(chatLanguageModel)

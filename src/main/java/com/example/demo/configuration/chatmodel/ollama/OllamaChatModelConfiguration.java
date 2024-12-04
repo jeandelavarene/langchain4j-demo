@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Profile;
 @Configuration
 public class OllamaChatModelConfiguration {
 
-    @Profile({"small"})
+    @Profile({"oracle", "small"})
     @Bean
     ChatLanguageModel tinyllamaChatLanguageModel() {
         return OllamaChatModel.builder()
