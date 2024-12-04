@@ -22,15 +22,22 @@ import dev.langchain4j.store.embedding.EmbeddingSearchRequest;
 import dev.langchain4j.store.embedding.EmbeddingSearchResult;
 import dev.langchain4j.store.embedding.EmbeddingStore;
 import dev.langchain4j.store.embedding.EmbeddingStoreIngestor;
+import oracle.jdbc.datasource.OracleDataSource;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Properties;
 import java.util.stream.Collectors;
 
 import static java.util.Arrays.asList;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 @Controller
 public class DemoController {
@@ -211,6 +218,31 @@ public class DemoController {
         String answer = assistant.chat(question);
 
         return getView(model, "11: Retrieval-Augmented Generation (RAG)", question, answer);
+    }
+
+    @GetMapping("/12")
+    String deleteEmbeddings(Model model) {
+
+        OracleDataSource ds;
+        try {
+            ds = new oracle.jdbc.datasource.impl.OracleDataSource();
+            Properties prop = new Properties();
+            prop.setProperty("user",System.getenv("ORACLE_JDBC_USER"));
+            prop.setProperty("password",System.getenv("ORACLE_JDBC_PASSWORD"));
+            ds.setConnectionProperties(prop);
+            ds.setURL(System.getenv("ORACLE_JDBC_URL"));
+            try (
+                Connection conn = ds.getConnection();
+                Statement stmt = conn.createStatement();
+            ) {
+                stmt.executeQuery("DELETE FROM PROFILE_ORACLE");
+            }
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return getView(model, "12: Delete embeddings", "Delete embeddings from the vector database", "OK");
     }
 
     private static String getView(Model model, String demoName, String question, String answer) {
