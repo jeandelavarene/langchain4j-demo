@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-darkblue">      <div class="container">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-darkgrey">      <div class="container">
         <a class="navbar-brand" href="#"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -21,21 +21,20 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="/">Home page</a></li>
-                  <li><a class="dropdown-item" href="/1">Demo 1: <s>image generation</s></a></li>
-                  <li><a class="dropdown-item" href="/2">Demo 2: simple question</a></li>
-                  <li><a class="dropdown-item" href="/3">Demo 3: reasoning</a></li>
-                  <li><a class="dropdown-item" href="/4">Demo 4: advanced question</a></li>
-                  <li><a class="dropdown-item" href="/5">Demo 5: A question without memory</a></li>
-                  <li><a class="dropdown-item" href="/6">Demo 6: A question with memory</a></li>
-                  <li><a class="dropdown-item" href="/7">Demo 7: Simple data ingestion</a></li>
-                  <li><a class="dropdown-item" href="/8">Demo 8: Querying the vector database</a></li>
-                  <li><a class="dropdown-item" href="/9">Demo 9: Getting the vectors from the vector database</a></li>
-                  <li><a class="dropdown-item" href="/10">Demo 10: Advanced data ingestion</a></li>
-                  <li><a class="dropdown-item" href="/11">Demo 11: Retrieval-Augmented Generation (RAG)</a></li>
-                  <li><a class="dropdown-item" href="/12">Demo 12: Delete embeddings from Oracle Autonomous DB</a></li>
+                  <li><a class="dropdown-item" href="/1">Demo 1: simple question</a></li>
+                  <li><a class="dropdown-item" href="/2">Demo 2: advanced question</a></li>
+                  <li><a class="dropdown-item" href="/3">Demo 3: A question with memory</a></li>
+                  <li><a class="dropdown-item" href="/4">Demo 4: Simple data ingestion</a></li>
+                  <li><a class="dropdown-item" href="/5">Demo 5: Querying the vector database</a></li>
+                  <li><a class="dropdown-item" href="/6">Demo 6: Show the vectors from the database</a></li>
+                  <li><a class="dropdown-item" href="/7">Demo 7: Advanced data ingestion</a></li>
+                  <li><a class="dropdown-item" href="/8">Demo 8: Retrieval-Augmented Generation (RAG)</a></li>
+                  <li><a class="dropdown-item" href="/9">Demo 9: Delete embeddings from Oracle Autonomous DB</a></li>
               </ul>
             </li>
           </ul>
+          <div class="navbar-brand">LangChain4J with 23ai Oracle Autonomous Database</div>
+          
         </div>
       </div>
     </nav>
@@ -44,12 +43,12 @@
 {{^demo}}
     <h1>Welcome to the LangChain4J demos!</h1>
 <p>
-    This is our main page, use the navigation bar above to access the demos.
+    This is our main page, use the drop down menu above to access the demos.
 </p>
 {{/demo}}
 {{#demo}}
-        <h1>This is demo {{demo}}</h1>
-
+        <h1>Demo {{demo}}</h1>
+        <div>{{demoDetails}}</div>
         <div class="row">
             <div class="col-12">
                 <h3>Question</h3>

@@ -6,11 +6,11 @@
   --bs-body-bg: var(--bs-gray-100);
 }
 
-.bg-darkblue {
-  background-color: #00008b !important; /* This is a dark blue color */
+.bg-darkgrey {
+  background-color: #312d2a !important; /* This is a dark grey color */
 }
 
 .navbar-dark .navbar-brand,
 .navbar-dark .navbar-nav .nav-link {
-  color: #ffffff !important; /* This is white color */
+  color: #f5F5F5 !important; /* This is white color */
 }
